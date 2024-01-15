@@ -16,11 +16,11 @@ export default {
         text: String,
       },
     ],
-    graphId: String
+    graphId: String,
   },
-  setup(props){
-    const graphName = "my_dataviz" + props.graphId.replaceAll(" ","_");
-    return({graphName})
+  setup(props) {
+    const graphName = "my_dataviz" + props.graphId.replaceAll(" ", "_");
+    return { graphName };
   },
 
   mounted() {
@@ -31,7 +31,7 @@ export default {
     // set the dimensions and margins of the graph
     var width = 300;
     var height = 500;
-    const graphName = "#my_dataviz" + this.graphId.replaceAll(" ","_");
+    const graphName = "#my_dataviz" + this.graphId.replaceAll(" ", "_");
 
     // append the svg object to the body of the page
     var svg = d3
@@ -63,8 +63,6 @@ export default {
         return "#D1D1D1";
       })
       .style("fill-opacity", 0.8)
-      .attr("stroke", "black")
-      .style("stroke-width", 1)
       .call(
         d3
           .drag() // call specific function when circle is dragged
