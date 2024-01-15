@@ -5,12 +5,12 @@ export default {
     },
   },
   properties: {
-    textColor: {
+    id: {
       label: {
-        en: "Text color",
+        en: "Id",
       },
-      type: "Color",
-      defaultValue: "#F23636",
+      type: "Text",
+      required: true
     },
     data: {
       label: {
