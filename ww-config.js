@@ -17,6 +17,7 @@ export default {
         en: "Data",
       },
       type: "Array",
+      defaultValue: [],
     },
   },
 };
