@@ -16,7 +16,6 @@ export default {
         text: String,
       },
     ],
-    graphId: string,
   },
 
   mounted() {
@@ -30,7 +29,7 @@ export default {
 
     // append the svg object to the body of the page
     var svg = d3
-      .select("#my_dataviz_" + graphId)
+      .select("#my_dataviz_")
       .append("svg")
       .attr("width", width)
       .attr("height", height);
@@ -49,7 +48,7 @@ export default {
     var circle = node
       .append("circle")
       .attr("class", "node")
-      .attr("r", function (d) {
+      .attr("r", function () {
         return size(50);
       })
       .attr("cx", width / 2)
@@ -104,7 +103,7 @@ export default {
         d3
           .forceCollide()
           .strength(1)
-          .radius(function (d) {
+          .radius(function () {
             return size(50);
           })
           .iterations(1)
@@ -150,7 +149,7 @@ export default {
 
 <template>
   <div class="container">
-    <div :id="`my_dataviz_${graphId}`"></div>
+    <div id="my_dataviz"></div>
   </div>
 </template>
 
