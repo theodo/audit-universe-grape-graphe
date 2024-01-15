@@ -1,5 +1,5 @@
 <template>
-  <BubbleGraph :bubblesProps="bubblesProps" />
+  <BubbleGraph :bubblesProps="content.data" />
 </template>
 
 <script>
@@ -89,6 +89,7 @@ const dataNotUsed = [
     text: "Ireland",
   },
 ];
+console.log(content.data);
 const bubblesProps = ref(content.data.sort((a, b) => b.value - a.value));
 </script>
 
