@@ -31,6 +31,9 @@ export default {
     var width = 300;
     var height = 500;
     const graphName = "#my_dataviz" + this.graphId.replaceAll(" ", "_");
+    if (data.length === 0) {
+      return;
+    }
 
     // append the svg object to the body of the page
     var svg = d3
