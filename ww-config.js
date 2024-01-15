@@ -16,7 +16,7 @@ export default {
       label: {
         en: "Data",
       },
-      type: "CollectionId",
+      type: "Array",
     },
   },
 };
