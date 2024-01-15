@@ -1,6 +1,6 @@
 <template>
   <BubbleGraph :bubblesProps="content.data" :graphId="content.id" />
-  <p>{{ content.data[0].text }}</p>
+  <p>Graph Name : {{ content.id }}</p>
 </template>
 
 <script>
@@ -18,7 +18,6 @@ export default {
 </script>
 
 <script setup>
-
 const dataNotUsed = [
   {
     color: "#FEDACC",
