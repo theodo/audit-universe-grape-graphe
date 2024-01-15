@@ -44,9 +44,18 @@ export default {
 
     var text = svg
       .append("text")
-      .text("test")
+      .text(data[0].text)
       .attr("x", width / 2)
       .attr("y", height / 2)
+      .style("text-anchor", "middle")
+      .style("font-weight", "bold")
+      .style("font-size", "10pt")
+      .style("fill", "black");
+    var text = svg
+      .append("text")
+      .text(data.length)
+      .attr("x", width / 3)
+      .attr("y", height / 3)
       .style("text-anchor", "middle")
       .style("font-weight", "bold")
       .style("font-size", "10pt")
