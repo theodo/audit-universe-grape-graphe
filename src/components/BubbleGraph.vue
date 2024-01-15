@@ -29,7 +29,7 @@ export default {
 
     // append the svg object to the body of the page
     var svg = d3
-      .select("#my_dataviz_")
+      .select("#my_dataviz")
       .append("svg")
       .attr("width", width)
       .attr("height", height);
