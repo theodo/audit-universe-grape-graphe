@@ -5,7 +5,6 @@
 
 <script>
 import BubbleGraph from "./components/BubbleGraph.vue";
-import { ref } from "vue";
 
 export default {
   name: "App",
@@ -19,7 +18,6 @@ export default {
 </script>
 
 <script setup>
-import { uuid } from "vue-uuid";
 
 const dataNotUsed = [
   {
@@ -86,7 +84,6 @@ const dataNotUsed = [
     text: "Ireland",
   },
 ];
-const graphId = uuid.v4();
 </script>
 
 <style lang="scss" scoped>
