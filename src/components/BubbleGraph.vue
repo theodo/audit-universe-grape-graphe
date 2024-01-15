@@ -16,6 +16,7 @@ export default {
         text: String,
       },
     ],
+    graphId: string,
   },
 
   mounted() {
@@ -29,7 +30,7 @@ export default {
 
     // append the svg object to the body of the page
     var svg = d3
-      .select("#my_dataviz")
+      .select("#my_dataviz_" + graphId)
       .append("svg")
       .attr("width", width)
       .attr("height", height);
@@ -54,7 +55,7 @@ export default {
       .attr("cx", width / 2)
       .attr("cy", height / 2)
       .style("fill", function () {
-        return "green";
+        return "#D1D1D1";
       })
       .style("fill-opacity", 0.8)
       .attr("stroke", "black")
@@ -75,7 +76,7 @@ export default {
       .style("text-anchor", "middle")
       .style("font-weight", "bold")
       .style("font-size", "10pt")
-      .style("fill", "#D1D1D1");
+      .style("fill", "black");
 
     // Features of the forces applied to the nodes:
     var simulation = d3
@@ -149,7 +150,7 @@ export default {
 
 <template>
   <div class="container">
-    <div id="my_dataviz"></div>
+    <div :id="`my_dataviz_${graphId}`"></div>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <BubbleGraph :bubblesProps="content.data" />
+  <BubbleGraph :bubblesProps="content.data" :graphId="graphId" />
   <p>{{ content.data[0].text }}</p>
 </template>
 
@@ -19,6 +19,8 @@ export default {
 </script>
 
 <script setup>
+import { uuid } from "vue-uuid";
+
 const dataNotUsed = [
   {
     color: "#FEDACC",
@@ -84,6 +86,7 @@ const dataNotUsed = [
     text: "Ireland",
   },
 ];
+const graphId = uuid.v4();
 </script>
 
 <style lang="scss" scoped>
