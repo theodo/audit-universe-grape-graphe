@@ -89,8 +89,6 @@ const dataNotUsed = [
     text: "Ireland",
   },
 ];
-console.log(content.data);
-const bubblesProps = ref(content.data.sort((a, b) => b.value - a.value));
 </script>
 
 <style lang="scss" scoped>

@@ -19,6 +19,7 @@ export default {
   },
 
   mounted() {
+    console.log(bubblesProps);
     const data = this.bubblesProps;
 
     let acc = 0;
