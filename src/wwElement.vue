@@ -1,5 +1,5 @@
 <template>
-  <p>{{ content.data[0].text }}</p>
+  <p>{{ content }}</p>
 </template>
 
 <script>
@@ -89,6 +89,7 @@ const dataNotUsed = [
     text: "Ireland",
   },
 ];
+console.log(content);
 </script>
 
 <style lang="scss" scoped>
