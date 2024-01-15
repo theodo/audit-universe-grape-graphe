@@ -48,6 +48,7 @@ export default {
       .range([0, height]);
 
     // Initialize the circle: all located at the center of the svg area
+    console.log(data);
     var node = svg.append("g").selectAll("circle").data(data).enter();
 
     var circle = node
