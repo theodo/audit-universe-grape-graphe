@@ -49,7 +49,7 @@ export default {
       .append("circle")
       .attr("class", "node")
       .attr("r", function (d) {
-        return size(d.scale);
+        return size(d.value);
       })
       .attr("cx", width / 2)
       .attr("cy", height / 2)
@@ -104,7 +104,7 @@ export default {
           .forceCollide()
           .strength(1)
           .radius(function (d) {
-            return size(d.scale);
+            return size(d.value);
           })
           .iterations(1)
       ); // Force that avoids circle overlapping
