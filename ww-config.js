@@ -40,6 +40,7 @@ export default {
         },
       },
       defaultValue: [],
+      bindable: true,
     },
   },
 };
