@@ -17,6 +17,28 @@ export default {
         en: "Data",
       },
       type: "Array",
+      options: {
+        item: {
+          type: "Object",
+          label: {
+            en: "item",
+          },
+          options: {
+            text: {
+              type: "Text",
+              label: {
+                en: "text",
+              },
+            },
+            value: {
+              type: "Number",
+              label: {
+                en: "value",
+              },
+            },
+          },
+        },
+      },
       defaultValue: [],
     },
   },
