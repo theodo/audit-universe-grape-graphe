@@ -12,12 +12,8 @@ export default {
     bubblesProps: [
       Array,
       {
-        color: String,
-        scale: Number,
+        value: Number,
         text: String,
-        xPosition: Number,
-        yPosition: Number,
-        textColor: String,
       },
     ],
   },

@@ -11,98 +11,85 @@ export default {
   components: {
     BubbleGraph,
   },
+  props: {
+    data: [
+      Array,
+      {
+        value: Number,
+        text: String,
+      },
+    ],
+  },
 };
 </script>
 
 <script setup>
-const data = [
+const dataNotUsed = [
   {
     color: "#FEDACC",
-    scale: 100,
+    value: 100,
     text: "SARL John Doe",
-    xPosition: 0,
-    yPosition: 300,
   },
   {
     color: "#696969",
     textColor: "white",
-    scale: 50,
+    value: 50,
     text: "Italy",
-    xPosition: 300,
-    yPosition: 0,
   },
   {
     color: "#FEDACC",
-    scale: 45,
+    value: 45,
+    text: "Ireland",
+  },
+  {
+    color: "#FEDACC",
+    value: 10,
+    text: "Ireland",
+  },
+  {
+    color: "#FEDACC",
+    value: 5,
+    text: "Ireland",
+  },
+  {
+    color: "#FEDACC",
+    value: 1,
+    text: "Ireland",
+  },
+  {
+    color: "#FEDACC",
+    value: 99,
+    text: "Ireland",
+  },
+  {
+    color: "#FEDACC",
+    value: 80,
     text: "Ireland",
     xPosition: 200,
     yPosition: 200,
   },
   {
     color: "#FEDACC",
-    scale: 10,
+    value: 25,
     text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
   },
   {
     color: "#FEDACC",
-    scale: 5,
+    value: 89,
     text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
   },
   {
     color: "#FEDACC",
-    scale: 1,
+    value: 14,
     text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
   },
   {
     color: "#FEDACC",
-    scale: 99,
+    value: 67,
     text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
-  },
-  {
-    color: "#FEDACC",
-    scale: 80,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
-  },
-  {
-    color: "#FEDACC",
-    scale: 25,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
-  },
-  {
-    color: "#FEDACC",
-    scale: 89,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
-  },
-  {
-    color: "#FEDACC",
-    scale: 14,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
-  },
-  {
-    color: "#FEDACC",
-    scale: 67,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
   },
 ];
-const bubblesProps = ref(data.sort((a, b) => b.scale - a.scale));
+const bubblesProps = ref(this.data.sort((a, b) => b.value - a.value));
 </script>
 
 <style lang="scss" scoped>
