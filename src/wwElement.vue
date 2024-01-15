@@ -1,5 +1,6 @@
 <template>
-  <p>{{ content }}</p>
+  <BubbleGraph :bubblesProps="content.data" />
+  <p>{{ content.data[0].text }}</p>
 </template>
 
 <script>
@@ -12,13 +13,7 @@ export default {
     BubbleGraph,
   },
   props: {
-    data: [
-      Array,
-      {
-        value: Number,
-        text: String,
-      },
-    ],
+    content: { type: "Object", required: true },
   },
 };
 </script>
@@ -89,7 +84,6 @@ const dataNotUsed = [
     text: "Ireland",
   },
 ];
-console.log(content);
 </script>
 
 <style lang="scss" scoped>
