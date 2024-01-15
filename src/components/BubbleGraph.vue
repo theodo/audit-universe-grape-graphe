@@ -42,6 +42,16 @@ export default {
       .attr("width", width)
       .attr("height", height);
 
+    var text = svg
+      .append("text")
+      .text("test")
+      .attr("x", width / 2)
+      .attr("y", height / 2)
+      .style("text-anchor", "middle")
+      .style("font-weight", "bold")
+      .style("font-size", "10pt")
+      .style("fill", "black");
+
     // Size scale for countries
     var size = d3.scaleLinear().domain([0, 100]).range([7, 55]); // circle will be between 7 and 55 px wide
     var repart = d3
