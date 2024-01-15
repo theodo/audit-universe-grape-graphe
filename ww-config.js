@@ -12,5 +12,11 @@ export default {
       type: "Color",
       defaultValue: "#F23636",
     },
+    data: {
+      label: {
+        en: "Data",
+      },
+      type: "CollectionId",
+    },
   },
 };
