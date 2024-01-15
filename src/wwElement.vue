@@ -1,5 +1,6 @@
 <template>
   <BubbleGraph :bubblesProps="content.data" />
+  <p>{{ content.data[0].text }}</p>
 </template>
 
 <script>
