@@ -49,7 +49,7 @@ export default {
       .append("circle")
       .attr("class", "node")
       .attr("r", function (d) {
-        return size(d.value);
+        return size(50);
       })
       .attr("cx", width / 2)
       .attr("cy", height / 2)
@@ -75,7 +75,7 @@ export default {
       .style("text-anchor", "middle")
       .style("font-weight", "bold")
       .style("font-size", "10pt")
-      .style("fill", "#344761");
+      .style("fill", "#D1D1D1");
 
     // Features of the forces applied to the nodes:
     var simulation = d3
@@ -104,7 +104,7 @@ export default {
           .forceCollide()
           .strength(1)
           .radius(function (d) {
-            return size(d.value);
+            return size(50);
           })
           .iterations(1)
       ); // Force that avoids circle overlapping
