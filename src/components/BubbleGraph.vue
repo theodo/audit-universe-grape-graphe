@@ -153,12 +153,7 @@ export default {
 <template>
   <div class="container">
     <div id="my_dataviz"></div>
-    <p>text</p>
   </div>
-  <svg>
-    <circle r="50" cx="50" cy="50" fill="green"></circle>
-    <text x="0" y="5" class="heavy">"test"</text>
-  </svg>
 </template>
 
 <style scoped>
