@@ -1,6 +1,6 @@
 <template>
-  <BubbleGraph :bubblesProps="content.data" :graphId="content.id" />
-  <p>{{ content.data[0].text }}</p>
+  <BubbleGraph :bubblesProps="bubblesProps" graphId="test" />
+  <p>{{ bubblesProps[0].text }}</p>
 </template>
 
 <script>
@@ -12,81 +12,98 @@ export default {
   components: {
     BubbleGraph,
   },
-  props: {
-    content: { type: "Object", required: true },
-  },
 };
 </script>
 
 <script setup>
-import { uuid } from "vue-uuid";
-
-const dataNotUsed = [
+const data = [
   {
     color: "#FEDACC",
-    value: 100,
+    scale: 100,
     text: "SARL John Doe",
+    xPosition: 0,
+    yPosition: 300,
   },
   {
     color: "#696969",
     textColor: "white",
-    value: 50,
+    scale: 50,
     text: "Italy",
+    xPosition: 300,
+    yPosition: 0,
   },
   {
     color: "#FEDACC",
-    value: 45,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
-    value: 10,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
-    value: 5,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
-    value: 1,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
-    value: 99,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
-    value: 80,
+    scale: 45,
     text: "Ireland",
     xPosition: 200,
     yPosition: 200,
   },
   {
     color: "#FEDACC",
-    value: 25,
+    scale: 10,
     text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
   },
   {
     color: "#FEDACC",
-    value: 89,
+    scale: 5,
     text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
   },
   {
     color: "#FEDACC",
-    value: 14,
+    scale: 1,
     text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
   },
   {
     color: "#FEDACC",
-    value: 67,
+    scale: 99,
     text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
+  },
+  {
+    color: "#FEDACC",
+    scale: 80,
+    text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
+  },
+  {
+    color: "#FEDACC",
+    scale: 25,
+    text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
+  },
+  {
+    color: "#FEDACC",
+    scale: 89,
+    text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
+  },
+  {
+    color: "#FEDACC",
+    scale: 14,
+    text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
+  },
+  {
+    color: "#FEDACC",
+    scale: 67,
+    text: "Ireland",
+    xPosition: 200,
+    yPosition: 200,
   },
 ];
-const graphId = uuid.v4();
+const bubblesProps = ref(data.sort((a, b) => b.scale - a.scale));
 </script>
 
 <style lang="scss" scoped>

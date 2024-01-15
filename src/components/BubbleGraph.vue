@@ -16,6 +16,11 @@ export default {
         text: String,
       },
     ],
+    graphId: String
+  },
+  setup(props){
+    const graphName = "my_dataviz" + props.graphId.replaceAll(" ","_");
+    return({graphName})
   },
 
   mounted() {
@@ -26,10 +31,11 @@ export default {
     // set the dimensions and margins of the graph
     var width = 300;
     var height = 500;
+    const graphName = "#my_dataviz" + this.graphId.replaceAll(" ","_");
 
     // append the svg object to the body of the page
     var svg = d3
-      .select("#my_dataviz")
+      .select(graphName)
       .append("svg")
       .attr("width", width)
       .attr("height", height);
@@ -149,7 +155,7 @@ export default {
 
 <template>
   <div class="container">
-    <div id="my_dataviz"></div>
+    <div :id="`${graphName}`"></div>
   </div>
 </template>
 
