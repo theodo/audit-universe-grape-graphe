@@ -123,7 +123,7 @@ export default {
         .style("fill", function () {
           return "#D1D1D1";
         })
-        .style("fill-opacity", 0.8)
+        .style("fill-opacity", 1)
         .call(
           d3
             .drag() // call specific function when circle is dragged
