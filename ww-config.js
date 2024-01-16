@@ -5,9 +5,9 @@ export default {
     },
   },
   properties: {
-    id: {
+    name: {
       label: {
-        en: "Id",
+        en: "Name",
       },
       type: "Text",
       required: true,
