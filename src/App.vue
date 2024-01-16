@@ -298,8 +298,8 @@ const props = (d) => {
     data: d.sort((a, b) => b.value - a.value),
     graphName: "graph",
     numberOfColumns: 3,
-    isLogScale: true,
-    logFactor: 0.5,
+    useLogarithmicScale: true,
+    LogarithmicFactor: 0.5,
   };
 };
 const props1 = props(data1);

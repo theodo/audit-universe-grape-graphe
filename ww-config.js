@@ -23,16 +23,16 @@ export default {
         defaultValue: 2,
       },
     },
-    isLogScale: {
+    useLogarithmicScale: {
       label: {
-        en: "Display on logarithmic",
+        en: "Display value on logarithmic scale",
       },
       type: "OnOff",
       defaultValue: false,
     },
-    logFactor: {
+    LogarithmicFactor: {
       label: {
-        en: "log factor",
+        en: "Logarithmic factor",
       },
       type: "Number",
       options: {

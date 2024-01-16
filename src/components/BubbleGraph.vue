@@ -14,8 +14,8 @@ export default {
       ],
       graphName: String,
       numberOfColumns: Number,
-      isLogScale: Boolean,
-      logFactor: Number,
+      useLogarithmicScale: Boolean,
+      LogarithmicFactor: Number,
     },
   },
   setup(props) {
@@ -31,13 +31,18 @@ export default {
 
   methods: {
     renderGraph() {
-      const getSizeScale = (isLogScale, logFactor, data, maxRadius) => {
+      const getSizeScale = (
+        useLogarithmicScale,
+        LogarithmicFactor,
+        data,
+        maxRadius
+      ) => {
         const maxValue = Math.max(...data.map((x) => x.value));
 
-        return isLogScale
+        return useLogarithmicScale
           ? d3
               .scalePow()
-              .exponent(logFactor)
+              .exponent(LogarithmicFactor)
               .domain([0, maxValue])
               .range([7, maxRadius])
           : d3.scaleLinear().domain([0, maxValue]).range([5, maxRadius]);
@@ -78,8 +83,8 @@ export default {
         containerWidth / (2 * this.bubbleGraphProps.numberOfColumns);
 
       const size = getSizeScale(
-        this.bubbleGraphProps.isLogScale,
-        this.bubbleGraphProps.logFactor,
+        this.bubbleGraphProps.useLogarithmicScale,
+        this.bubbleGraphProps.LogarithmicFactor,
         data,
         maxRadius
       );
