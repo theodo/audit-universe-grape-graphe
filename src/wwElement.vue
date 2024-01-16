@@ -1,7 +1,7 @@
 <template>
   <BubbleGraph :bubblesProps="content.data" :graphId="content.id" />
   <p>Graph Name : {{ content.id }}</p>
-  <p>Graph value : {{ content.data[0].value }}</p>
+  <p class="invisible">Graph value : {{ content.data[0].value }}</p>
 </template>
 
 <script>
@@ -91,5 +91,8 @@ const dataNotUsed = [
   p {
     font-size: 18px;
   }
+}
+.invisible {
+  display: none;
 }
 </style>
