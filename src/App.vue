@@ -142,7 +142,7 @@ const data = [
 const bubblesProps = data.sort((a, b) => b.value - a.value);
 const props = {
   data: bubblesProps,
-  graphId: "graph",
+  id: "graph",
   numberOfColumns: 3,
   isLogScale: false,
   logFactor: 2,

@@ -12,7 +12,7 @@ export default {
           text: String,
         },
       ],
-      graphId: String,
+      id: String,
       numberOfColumns: Number,
       isLogScale: Boolean,
       logFactor: Number,
@@ -20,7 +20,7 @@ export default {
   },
   setup(props) {
     const graphName =
-      "my_dataviz" + props.bubbleGraphProps.graphId.replaceAll(" ", "_");
+      "my_dataviz" + props.bubbleGraphProps.id.replaceAll(" ", "_");
     return { graphName };
   },
 
@@ -56,7 +56,7 @@ export default {
     const height =
       (2 * (data.length * averageSize)) / this.bubbleGraphProps.numberOfColumns;
     const graphName =
-      "#my_dataviz" + this.bubbleGraphProps.graphId.replaceAll(" ", "_");
+      "#my_dataviz" + this.bubbleGraphProps.id.replaceAll(" ", "_");
 
     // var repart = d3
     //   .scalePow()
