@@ -46,15 +46,21 @@ export default {
       maxRadius
     );
 
-    const sumSize = data.reduce((a, b) => a + size(b.value), 0);
+    const sumSize =
+      data[Math.round(data.length / 4)].value +
+      data[Math.round(data.length / 2)].value +
+      data[Math.round((3 * data.length) / 4)].value +
+      data[0].value +
+      data[data.length - 1].value;
 
-    const averageSize = sumSize / data.length || 0;
+    const averageSize = sumSize / 5 || 0;
 
     // let acc = 0;
     // set the dimensions and margins of the graph
     const width = containerWidth;
     const height =
-      (2 * (data.length * averageSize)) / this.bubbleGraphProps.numberOfColumns;
+      (2 * (data.length * size(averageSize))) /
+      this.bubbleGraphProps.numberOfColumns;
     const graphName =
       "#my_dataviz" + this.bubbleGraphProps.id.replaceAll(" ", "_");
 

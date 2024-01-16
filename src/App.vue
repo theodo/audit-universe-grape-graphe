@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <BubbleGraph :bubbleGraphProps="props" />
+    <BubbleGraph :bubbleGraphProps="props1" />
+    <BubbleGraph :bubbleGraphProps="props2" />
   </div>
-  <p>{{ bubblesProps[0].text }}</p>
 </template>
 
 <script>
@@ -17,7 +17,55 @@ export default {
 </script>
 
 <script setup>
-const data = [
+const data2 = [
+  {
+    text: "Iran",
+    value: 100,
+    score: 4,
+  },
+  {
+    text: "UK",
+    value: 2,
+    score: 10,
+  },
+  {
+    text: "USA",
+    value: 2,
+    score: 10,
+  },
+  {
+    text: "France",
+    value: 2,
+    score: 10,
+  },
+  {
+    text: "Ireland",
+    value: 2,
+    score: 10,
+  },
+  {
+    text: "Germany",
+    value: 2,
+    score: 1,
+  },
+  {
+    text: "Enies lobby",
+    value: 2,
+    score: 1,
+  },
+  {
+    text: "Switzerland",
+    value: 2,
+    score: 1,
+  },
+  {
+    text: "Sweden",
+    value: 2,
+    score: 1,
+  },
+];
+
+const data1 = [
   {
     text: "Italie",
     value: 10,
@@ -139,14 +187,17 @@ const data = [
     score: 37,
   },
 ];
-const bubblesProps = data.sort((a, b) => b.value - a.value);
-const props = {
-  data: bubblesProps,
-  id: "graph",
-  numberOfColumns: 3,
-  isLogScale: false,
-  logFactor: 2,
+const props = (d) => {
+  return {
+    data: d.sort((a, b) => b.value - a.value),
+    id: "graph",
+    numberOfColumns: 3,
+    isLogScale: true,
+    logFactor: 2,
+  };
 };
+const props1 = props(data1);
+const props2 = props(data2);
 </script>
 
 <style lang="scss" scoped>
