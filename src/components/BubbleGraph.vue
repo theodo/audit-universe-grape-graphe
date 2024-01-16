@@ -64,9 +64,10 @@ export default {
       // let acc = 0;
       // set the dimensions and margins of the graph
       const width = containerWidth;
-      const height =
-        (2 * (data.length * size(averageSize))) /
-        this.bubbleGraphProps.numberOfColumns;
+      const height = Math.max(
+        (maxRadius * 1.5, 2 * (data.length * size(averageSize))) /
+          this.bubbleGraphProps.numberOfColumns
+      );
       const graphName =
         "#my_dataviz" + this.bubbleGraphProps.graphName.replaceAll(" ", "_");
 
@@ -136,7 +137,7 @@ export default {
         //       return (repart(acc) * height) / repart(data.length);
         //     })
         // )
-        .force("charge", d3.forceManyBody().strength(20)) // Nodes are attracted one each other of scale * 1000000 is > 0
+        .force("charge", d3.forceManyBody().strength(10)) // Nodes are attracted one each other of scale * 1000000 is > 0
         .force(
           "collide",
           d3
