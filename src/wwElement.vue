@@ -1,8 +1,6 @@
 <template>
   <BubbleGraph :bubblesProps="content.data" :graphId="content.id" />
   <p>Graph Name : {{ content.id }}</p>
-  <p>Graph element : {{ content.data[0].text }}</p>
-  <p>Graph value : {{ content.data[0].value }}</p>
 </template>
 
 <script>
