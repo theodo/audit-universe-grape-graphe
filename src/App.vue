@@ -2,6 +2,7 @@
   <div class="content">
     <BubbleGraph :bubbleGraphProps="props1" />
     <BubbleGraph :bubbleGraphProps="props2" />
+    <BubbleGraph :bubbleGraphProps="props3" />
   </div>
 </template>
 
@@ -187,6 +188,54 @@ const data1 = [
     score: 37,
   },
 ];
+
+const data3 = [
+  {
+    text: "Iran",
+    value: 2,
+    score: 10,
+  },
+  {
+    text: "UK",
+    value: 10000,
+    score: 1,
+  },
+  {
+    text: "USA",
+    value: 100,
+    score: 2,
+  },
+  {
+    text: "France",
+    value: 100,
+    score: 3,
+  },
+  {
+    text: "Ireland",
+    value: 100,
+    score: 4,
+  },
+  {
+    text: "Germany",
+    value: 100,
+    score: null,
+  },
+  {
+    text: "Enies lobby",
+    value: 100,
+    score: 7,
+  },
+  {
+    text: "Switzerland",
+    value: 100,
+    score: null,
+  },
+  {
+    text: "Sweden",
+    value: 100,
+    score: null,
+  },
+];
 const props = (d) => {
   return {
     data: d.sort((a, b) => b.value - a.value),
@@ -198,6 +247,7 @@ const props = (d) => {
 };
 const props1 = props(data1);
 const props2 = props(data2);
+const props3 = props(data3);
 </script>
 
 <style lang="scss" scoped>

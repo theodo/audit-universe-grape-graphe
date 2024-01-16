@@ -65,9 +65,12 @@ export default {
       // set the dimensions and margins of the graph
       const width = containerWidth;
       const height = Math.max(
-        (maxRadius * 3, 2 * (data.length * size(averageSize))) /
+        maxRadius * 3,
+        (2 * (data.length * size(averageSize))) /
           this.bubbleGraphProps.numberOfColumns
       );
+      console.log("height", height);
+      console.log(maxRadius * 10);
       const graphName =
         "#my_dataviz" + this.bubbleGraphProps.graphName.replaceAll(" ", "_");
 
