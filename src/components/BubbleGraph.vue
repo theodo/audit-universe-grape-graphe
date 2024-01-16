@@ -16,6 +16,8 @@ export default {
       numberOfColumns: Number,
       useLogarithmicScale: Boolean,
       LogarithmicFactor: Number,
+      maxRadius: Number,
+      minRadius: Number,
     },
   },
   setup(props) {
@@ -35,7 +37,8 @@ export default {
         useLogarithmicScale,
         LogarithmicFactor,
         data,
-        maxRadius
+        maxRadius,
+        minRadius
       ) => {
         const maxValue = Math.max(...data.map((x) => x.value));
 
@@ -44,8 +47,11 @@ export default {
               .scalePow()
               .exponent(LogarithmicFactor)
               .domain([0, maxValue])
-              .range([7, maxRadius])
-          : d3.scaleLinear().domain([0, maxValue]).range([5, maxRadius]);
+              .range([minRadius, maxRadius])
+          : d3
+              .scaleLinear()
+              .domain([0, maxValue])
+              .range([minRadius, maxRadius]);
       };
 
       const getSvgDimension = (data, sizeScale, maxRadius) => {
@@ -80,13 +86,21 @@ export default {
       let containerWidth = this.$refs.container.clientWidth;
 
       const maxRadius =
-        containerWidth / (2 * this.bubbleGraphProps.numberOfColumns);
+        this.bubbleGraphProps.maxRadius === 0
+          ? containerWidth / (2 * this.bubbleGraphProps.numberOfColumns)
+          : this.bubbleGraphProps.maxRadius;
+
+      const minRadius =
+        this.bubbleGraphProps.minRadius === 0
+          ? 5
+          : this.bubbleGraphProps.minRadius;
 
       const size = getSizeScale(
         this.bubbleGraphProps.useLogarithmicScale,
         this.bubbleGraphProps.LogarithmicFactor,
         data,
-        maxRadius
+        maxRadius,
+        minRadius
       );
 
       const { width, height } = getSvgDimension(data, size, maxRadius);

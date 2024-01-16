@@ -300,6 +300,8 @@ const props = (d) => {
     numberOfColumns: 3,
     useLogarithmicScale: true,
     LogarithmicFactor: 0.5,
+    maxRadius: 100,
+    minRadius: 5,
   };
 };
 const props1 = props(data1);
