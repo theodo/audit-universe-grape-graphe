@@ -65,7 +65,7 @@ export default {
       // set the dimensions and margins of the graph
       const width = containerWidth;
       const height = Math.max(
-        (maxRadius * 1.5, 2 * (data.length * size(averageSize))) /
+        (maxRadius * 3, 2 * (data.length * size(averageSize))) /
           this.bubbleGraphProps.numberOfColumns
       );
       const graphName =
