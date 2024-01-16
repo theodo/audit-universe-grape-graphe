@@ -24,7 +24,7 @@ export default {
     return { graphId };
   },
   watch: {
-    bubblesProps() {
+    bubbleGraphProps() {
       this.renderGraph();
     },
   },
