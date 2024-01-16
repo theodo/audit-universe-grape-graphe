@@ -17,13 +17,17 @@ export default {
         en: "Number of Columns",
       },
       type: "Number",
+      options: {
+        min: 1,
+        max: 20,
+      },
       defaultValue: 2,
     },
     isLogScale: {
       label: {
         en: "Display on logarithmic",
       },
-      type: "boolean",
+      type: "OnOff",
       defaultValue: false,
     },
     logFactor: {
@@ -31,6 +35,10 @@ export default {
         en: "log factor",
       },
       type: "Number",
+      options: {
+        min: 1,
+        max: 10,
+      },
       defaultValue: 2,
     },
     data: {
