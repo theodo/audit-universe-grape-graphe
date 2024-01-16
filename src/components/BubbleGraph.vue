@@ -19,7 +19,8 @@ export default {
     },
   },
   setup(props) {
-    const graphId = "my_dataviz" + props.graphName.replaceAll(" ", "_");
+    const graphId =
+      "my_dataviz" + props.bubbleGraphProps.graphName.replaceAll(" ", "_");
     return { graphId };
   },
   watch: {
@@ -67,7 +68,7 @@ export default {
         (2 * (data.length * size(averageSize))) /
         this.bubbleGraphProps.numberOfColumns;
       const graphName =
-        "#my_dataviz" + this.bubbleGraphProps.id.replaceAll(" ", "_");
+        "#my_dataviz" + this.bubbleGraphProps.graphName.replaceAll(" ", "_");
 
       // var repart = d3
       //   .scalePow()
@@ -202,7 +203,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" ref="container">
     <div :id="`${graphId}`"></div>
   </div>
 </template>

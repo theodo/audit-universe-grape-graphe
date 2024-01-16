@@ -5,7 +5,7 @@ export default {
     },
   },
   properties: {
-    name: {
+    graphName: {
       label: {
         en: "Name",
       },

@@ -190,7 +190,7 @@ const data1 = [
 const props = (d) => {
   return {
     data: d.sort((a, b) => b.value - a.value),
-    id: "graph",
+    graphName: "graph",
     numberOfColumns: 3,
     isLogScale: true,
     logFactor: 2,
