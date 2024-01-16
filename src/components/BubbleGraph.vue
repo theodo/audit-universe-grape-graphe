@@ -105,16 +105,16 @@ export default {
 
       const { width, height } = getSvgDimension(data, size, maxRadius);
 
-      // let acc = 0;
+      let acc = 0;
 
       const graphName =
         "#my_dataviz" + this.bubbleGraphProps.graphName.replaceAll(" ", "_");
 
-      // var repart = d3
-      //   .scalePow()
-      //   .exponent(1)
-      //   .domain([0, data.length])
-      //   .range([0, height]);
+      var repart = d3
+        .scalePow()
+        .exponent(1)
+        .domain([0, data.length])
+        .range([0, height]);
 
       // append the svg object to the body of the page
       var svg = d3
@@ -159,23 +159,23 @@ export default {
       // Features of the forces applied to the nodes:
       var simulation = d3
         .forceSimulation()
-        // .force(
-        //   "x",
-        //   d3
-        //     .forceX()
-        //     .strength(0.1)
-        //     .x(width / 2)
-        // )
-        // .force(
-        //   "y",
-        //   d3
-        //     .forceY()
-        //     .strength(0.1)
-        //     .y(function () {
-        //       acc = acc + 1;
-        //       return (repart(acc) * height) / repart(data.length);
-        //     })
-        // )
+        .force(
+          "x",
+          d3
+            .forceX()
+            .strength(0.1)
+            .x(width / 2)
+        )
+        .force(
+          "y",
+          d3
+            .forceY()
+            .strength(0.1)
+            .y(function () {
+              acc = acc + 1;
+              return (repart(acc) * height) / repart(data.length);
+            })
+        )
         .force("charge", d3.forceManyBody().strength(10)) // Nodes are attracted one each other of scale * 1000000 is > 0
         .force(
           "collide",
