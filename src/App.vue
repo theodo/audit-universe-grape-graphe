@@ -242,7 +242,7 @@ const props = (d) => {
     graphName: "graph",
     numberOfColumns: 3,
     isLogScale: true,
-    logFactor: 2,
+    logFactor: 0.5,
   };
 };
 const props1 = props(data1);

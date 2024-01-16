@@ -31,9 +31,13 @@ export default {
 
   methods: {
     renderGraph() {
-      const getSizeScale = (isLogScale, maxValue, maxRadius) => {
+      const getSizeScale = (isLogScale, logFactor, maxValue, maxRadius) => {
         return isLogScale
-          ? d3.scaleSqrt().domain([0, maxValue]).range([7, maxRadius])
+          ? d3
+              .scalePow()
+              .exponent(logFactor)
+              .domain([0, maxValue])
+              .range([7, maxRadius])
           : d3.scaleLinear().domain([0, maxValue]).range([5, maxRadius]);
       };
 
@@ -48,6 +52,7 @@ export default {
 
       var size = getSizeScale(
         this.bubbleGraphProps.isLogScale,
+        this.bubbleGraphProps.logFactor,
         maxValue,
         maxRadius
       );

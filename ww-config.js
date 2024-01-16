@@ -19,9 +19,9 @@ export default {
       type: "Number",
       options: {
         min: 1,
-        max: 20,
+        max: 10,
+        defaultValue: 2,
       },
-      defaultValue: 2,
     },
     isLogScale: {
       label: {
@@ -36,10 +36,11 @@ export default {
       },
       type: "Number",
       options: {
-        min: 1,
-        max: 10,
+        min: 0,
+        max: 1,
+        step: 0.1,
+        defaultValue: 0.5,
       },
-      defaultValue: 2,
     },
     data: {
       label: {
