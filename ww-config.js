@@ -42,6 +42,30 @@ export default {
         defaultValue: 0.5,
       },
     },
+    minRadius: {
+      label: {
+        en: "Minimum bubble radius",
+      },
+      type: "Number",
+      options: {
+        min: 5,
+        max: 100,
+        step: 5,
+      },
+      required: false,
+    },
+    maxRadius: {
+      label: {
+        en: "Maximum bubble radius",
+      },
+      type: "Number",
+      options: {
+        min: 50,
+        max: 1000,
+        step: 10,
+      },
+      required: false,
+    },
     data: {
       label: {
         en: "Data",
