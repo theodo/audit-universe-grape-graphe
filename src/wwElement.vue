@@ -1,8 +1,6 @@
 <template>
   <BubbleGraph :bubbleGraphProps="content" />
   <p>Graph Name : {{ content.graphName }}</p>
-  <p>Max Size : {{ content.maxRadius }}</p>
-  <p>Min Size : {{ content.minRadius }}</p>
   <p class="invisible">First element name : {{ content.data[0].text }}</p>
 </template>
 
