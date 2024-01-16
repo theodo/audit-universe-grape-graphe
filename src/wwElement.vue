@@ -1,7 +1,6 @@
 <template>
   <BubbleGraph :bubbleGraphProps="content" />
   <p>Graph Name : {{ content.id }}</p>
-  <p class="invisible">Graph value : {{ content.data[0].value }}</p>
 </template>
 
 <script>
