@@ -31,7 +31,9 @@ export default {
 
   methods: {
     renderGraph() {
-      const getSizeScale = (isLogScale, logFactor, maxValue, maxRadius) => {
+      const getSizeScale = (isLogScale, logFactor, data, maxRadius) => {
+        const maxValue = Math.max(...data.map((x) => x.value));
+
         return isLogScale
           ? d3
               .scalePow()
@@ -41,41 +43,51 @@ export default {
           : d3.scaleLinear().domain([0, maxValue]).range([5, maxRadius]);
       };
 
+      const getSvgDimension = (data, sizeScale, maxRadius) => {
+        const averageOfValues =
+          data.reduce((a, b) => {
+            return a + b.value;
+          }, 0) / data.length;
+
+        const sumOfQuartileValue =
+          data.length > 1
+            ? data[Math.round(data.length / 4)].value +
+              data[Math.round(data.length / 2)].value +
+              data[Math.round((3 * data.length) / 4)].value +
+              data[0].value +
+              data[data.length - 1].value
+            : data[0].value;
+
+        const averageOfQuartileValue = sumOfQuartileValue / 5 || 0;
+
+        const averageToUse = Math.max(averageOfQuartileValue, averageOfValues);
+
+        const width = containerWidth;
+        const height = Math.max(
+          maxRadius * 2.5,
+          (2 * (data.length * sizeScale(averageToUse))) /
+            this.bubbleGraphProps.numberOfColumns
+        );
+        return { width, height, maxRadius };
+      };
       const data = this.bubbleGraphProps.data;
 
       let containerWidth = this.$refs.container.clientWidth;
 
-      const maxValue = Math.max(...data.map((x) => x.value));
-
       const maxRadius =
         containerWidth / (2 * this.bubbleGraphProps.numberOfColumns);
 
-      var size = getSizeScale(
+      const size = getSizeScale(
         this.bubbleGraphProps.isLogScale,
         this.bubbleGraphProps.logFactor,
-        maxValue,
+        data,
         maxRadius
       );
 
-      const sumSize =
-        data[Math.round(data.length / 4)].value +
-        data[Math.round(data.length / 2)].value +
-        data[Math.round((3 * data.length) / 4)].value +
-        data[0].value +
-        data[data.length - 1].value;
-
-      const averageSize = sumSize / 5 || 0;
+      const { width, height } = getSvgDimension(data, size, maxRadius);
 
       // let acc = 0;
-      // set the dimensions and margins of the graph
-      const width = containerWidth;
-      const height = Math.max(
-        maxRadius * 3,
-        (2 * (data.length * size(averageSize))) /
-          this.bubbleGraphProps.numberOfColumns
-      );
-      console.log("height", height);
-      console.log(maxRadius * 10);
+
       const graphName =
         "#my_dataviz" + this.bubbleGraphProps.graphName.replaceAll(" ", "_");
 
