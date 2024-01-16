@@ -1,39 +1,68 @@
 <script>
-import BubbleComponent from "./BubbleComponent.vue";
 import * as d3 from "d3";
 
 export default {
   name: "BubbleGraph",
-  components: {
-    // eslint-disable-next-line vue/no-unused-components
-    BubbleComponent,
-  },
   props: {
-    bubblesProps: [
-      Array,
-      {
-        value: Number,
-        text: String,
-      },
-    ],
-    graphId: String,
+    bubbleGraphProps: {
+      data: [
+        Array,
+        {
+          value: Number,
+          text: String,
+        },
+      ],
+      graphId: String,
+      numberOfColumns: Number,
+      isLogScale: Boolean,
+      logFactor: Number,
+    },
   },
   setup(props) {
-    const graphName = "my_dataviz" + props.graphId.replaceAll(" ", "_");
+    const graphName =
+      "my_dataviz" + props.bubbleGraphProps.graphId.replaceAll(" ", "_");
     return { graphName };
   },
 
   mounted() {
-    const data = this.bubblesProps;
+    const getSizeScale = (isLogScale, maxValue, maxRadius) => {
+      return isLogScale
+        ? d3.scaleSqrt().domain([0, maxValue]).range([7, maxRadius])
+        : d3.scaleLinear().domain([0, maxValue]).range([5, maxRadius]);
+    };
 
-    let acc = 0;
+    const data = this.bubbleGraphProps.data;
+
+    let containerWidth = this.$refs.container.clientWidth;
+
+    const maxValue = Math.max(...data.map((x) => x.value));
+
+    const maxRadius =
+      containerWidth / (2 * this.bubbleGraphProps.numberOfColumns);
+
+    var size = getSizeScale(
+      this.bubbleGraphProps.isLogScale,
+      maxValue,
+      maxRadius
+    );
+
+    const sumSize = data.reduce((a, b) => a + size(b.value), 0);
+
+    const averageSize = sumSize / data.length || 0;
+
+    // let acc = 0;
     // set the dimensions and margins of the graph
-    var width = 300;
-    var height = 500;
-    const graphName = "#my_dataviz" + this.graphId.replaceAll(" ", "_");
-    if (data.length === 0) {
-      return;
-    }
+    const width = containerWidth;
+    const height =
+      (2 * (data.length * averageSize)) / this.bubbleGraphProps.numberOfColumns;
+    const graphName =
+      "#my_dataviz" + this.bubbleGraphProps.graphId.replaceAll(" ", "_");
+
+    // var repart = d3
+    //   .scalePow()
+    //   .exponent(1)
+    //   .domain([0, data.length])
+    //   .range([0, height]);
 
     // append the svg object to the body of the page
     var svg = d3
@@ -42,23 +71,14 @@ export default {
       .attr("width", width)
       .attr("height", height);
 
-    // Size scale for countries
-    var size = d3.scaleLinear().domain([0, 100]).range([7, 55]); // circle will be between 7 and 55 px wide
-    var repart = d3
-      .scalePow()
-      .exponent(1)
-      .domain([0, data.length])
-      .range([0, height]);
-
     // Initialize the circle: all located at the center of the svg area
-    console.log(data);
     var node = svg.append("g").selectAll("circle").data(data).enter();
 
     var circle = node
       .append("circle")
       .attr("class", "node")
-      .attr("r", function () {
-        return size(50);
+      .attr("r", function (d) {
+        return size(d.value);
       })
       .attr("cx", width / 2)
       .attr("cy", height / 2)
@@ -87,31 +107,31 @@ export default {
     // Features of the forces applied to the nodes:
     var simulation = d3
       .forceSimulation()
-      .force(
-        "x",
-        d3
-          .forceX()
-          .strength(0.1)
-          .x(width / 2)
-      )
-      .force(
-        "y",
-        d3
-          .forceY()
-          .strength(0.1)
-          .y(function () {
-            acc = acc + 1;
-            return (repart(acc) * height) / repart(data.length);
-          })
-      )
-      .force("charge", d3.forceManyBody().strength(100)) // Nodes are attracted one each other of scale * 1000000 is > 0
+      // .force(
+      //   "x",
+      //   d3
+      //     .forceX()
+      //     .strength(0.1)
+      //     .x(width / 2)
+      // )
+      // .force(
+      //   "y",
+      //   d3
+      //     .forceY()
+      //     .strength(0.1)
+      //     .y(function () {
+      //       acc = acc + 1;
+      //       return (repart(acc) * height) / repart(data.length);
+      //     })
+      // )
+      .force("charge", d3.forceManyBody().strength(20)) // Nodes are attracted one each other of scale * 1000000 is > 0
       .force(
         "collide",
         d3
           .forceCollide()
           .strength(1)
-          .radius(function () {
-            return size(50);
+          .radius(function (d) {
+            return size(d.value);
           })
           .iterations(1)
       ); // Force that avoids circle overlapping
@@ -121,17 +141,17 @@ export default {
     simulation.nodes(data).on("tick", function () {
       circle
         .attr("cx", function (d) {
-          return (d.x = Math.max(55, Math.min(width - 55, d.x)));
+          return (d.x = Math.max(maxRadius, Math.min(width - maxRadius, d.x)));
         })
         .attr("cy", function (d) {
-          return (d.y = Math.max(55, Math.min(height - 55, d.y)));
+          return (d.y = Math.max(maxRadius, Math.min(height - maxRadius, d.y)));
         });
       text
         .attr("x", function (d) {
-          return (d.x = Math.max(55, Math.min(width - 55, d.x)));
+          return (d.x = Math.max(maxRadius, Math.min(width - maxRadius, d.x)));
         })
         .attr("y", function (d) {
-          return (d.y = Math.max(55, Math.min(height - 55, d.y)));
+          return (d.y = Math.max(maxRadius, Math.min(height - maxRadius, d.y)));
         });
     });
 
@@ -155,7 +175,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" ref="container">
     <div :id="`${graphName}`"></div>
   </div>
 </template>
@@ -164,6 +184,7 @@ export default {
 .container {
   display: flex;
   justify-content: center;
+  flex-grow: 1;
 }
 .heavy {
   font: bold 30px sans-serif;

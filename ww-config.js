@@ -10,7 +10,28 @@ export default {
         en: "Id",
       },
       type: "Text",
-      required: true
+      required: true,
+    },
+    numberOfColumns: {
+      label: {
+        en: "Number of Columns",
+      },
+      type: "Number",
+      defaultValue: 2,
+    },
+    isLogScale: {
+      label: {
+        en: "Display on logarithmic",
+      },
+      type: "boolean",
+      defaultValue: false,
+    },
+    logFactor: {
+      label: {
+        en: "log factor",
+      },
+      type: "Number",
+      defaultValue: 2,
     },
     data: {
       label: {

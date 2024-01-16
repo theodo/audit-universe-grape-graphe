@@ -1,11 +1,12 @@
 <template>
-  <BubbleGraph :bubblesProps="bubblesProps" graphId="test" />
+  <div class="content">
+    <BubbleGraph :bubbleGraphProps="props" />
+  </div>
   <p>{{ bubblesProps[0].text }}</p>
 </template>
 
 <script>
 import BubbleGraph from "./components/BubbleGraph.vue";
-import { ref } from "vue";
 
 export default {
   name: "App",
@@ -18,92 +19,134 @@ export default {
 <script setup>
 const data = [
   {
-    color: "#FEDACC",
-    scale: 100,
-    text: "SARL John Doe",
-    xPosition: 0,
-    yPosition: 300,
+    text: "Italie",
+    value: 10,
+    score: 4,
   },
   {
-    color: "#696969",
-    textColor: "white",
-    scale: 50,
-    text: "Italy",
-    xPosition: 300,
-    yPosition: 0,
+    text: "France",
+    value: 7,
+    score: 100,
   },
   {
-    color: "#FEDACC",
-    scale: 45,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Espagne",
+    value: 9,
+    score: 55,
   },
   {
-    color: "#FEDACC",
-    scale: 10,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Roumanie",
+    value: 8,
+    score: 32,
   },
   {
-    color: "#FEDACC",
-    scale: 5,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Danemark",
+    value: 10,
+    score: 90,
   },
   {
-    color: "#FEDACC",
-    scale: 1,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Hollande",
+    value: 7,
+    score: 78,
   },
   {
-    color: "#FEDACC",
-    scale: 99,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "UK",
+    value: 8,
+    score: 14,
   },
   {
-    color: "#FEDACC",
-    scale: 80,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Irlande",
+    value: 9,
+    score: 3162,
   },
   {
-    color: "#FEDACC",
-    scale: 25,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Sénégal",
+    value: 102,
+    score: 62,
   },
   {
-    color: "#FEDACC",
-    scale: 89,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Mali",
+    value: 36,
+    score: 14,
   },
   {
-    color: "#FEDACC",
-    scale: 14,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Russie",
+    value: 7,
+    score: 5262,
   },
   {
-    color: "#FEDACC",
-    scale: 67,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Venezuela",
+    value: 9,
+    score: 262,
+  },
+  {
+    text: "Kenya",
+    value: 9,
+    score: 623,
+  },
+  {
+    text: "Guatemala",
+    value: 8,
+    score: 144,
+  },
+  {
+    text: "Hongrie",
+    value: 9,
+    score: 612,
+  },
+  {
+    text: "Chine",
+    value: 5,
+    score: 137,
+  },
+  {
+    text: "Pérou",
+    value: 102,
+    score: 71,
+  },
+  {
+    text: "Ouganda",
+    value: 6,
+    score: 1,
+  },
+  {
+    text: "Bolivie",
+    value: 48,
+    score: 262,
+  },
+  {
+    text: "Chili",
+    value: 1,
+    score: 2222,
+  },
+  {
+    text: "Jordanie",
+    value: 91,
+    score: 63,
+  },
+  {
+    text: "Israel",
+    value: 87,
+    score: 14,
+  },
+  {
+    text: "Liban",
+    value: 91,
+    score: 6,
+  },
+  {
+    text: "Maroc",
+    value: 59,
+    score: 37,
   },
 ];
-const bubblesProps = ref(data.sort((a, b) => b.scale - a.scale));
+const bubblesProps = data.sort((a, b) => b.value - a.value);
+const props = {
+  data: bubblesProps,
+  graphId: "graph",
+  numberOfColumns: 3,
+  isLogScale: false,
+  logFactor: 2,
+};
 </script>
 
 <style lang="scss" scoped>
@@ -111,5 +154,8 @@ const bubblesProps = ref(data.sort((a, b) => b.scale - a.scale));
   p {
     font-size: 18px;
   }
+}
+.content {
+  width: 1000px;
 }
 </style>

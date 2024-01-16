@@ -1,5 +1,5 @@
 <template>
-  <BubbleGraph :bubblesProps="content.data" :graphId="content.id" />
+  <BubbleGraph :bubbleGraphProps="content" />
   <p>Graph Name : {{ content.id }}</p>
   <p class="invisible">Graph value : {{ content.data[0].value }}</p>
 </template>
@@ -21,67 +21,124 @@ export default {
 <script setup>
 const dataNotUsed = [
   {
-    color: "#FEDACC",
-    value: 100,
-    text: "SARL John Doe",
-  },
-  {
-    color: "#696969",
-    textColor: "white",
-    value: 50,
-    text: "Italy",
-  },
-  {
-    color: "#FEDACC",
-    value: 45,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
+    text: "Italie",
     value: 10,
-    text: "Ireland",
+    score: 4,
   },
   {
-    color: "#FEDACC",
+    text: "France",
+    value: 7,
+    score: 100,
+  },
+  {
+    text: "Espagne",
+    value: 9,
+    score: 55,
+  },
+  {
+    text: "Roumanie",
+    value: 8,
+    score: 32,
+  },
+  {
+    text: "Danemark",
+    value: 10,
+    score: 90,
+  },
+  {
+    text: "Hollande",
+    value: 7,
+    score: 78,
+  },
+  {
+    text: "UK",
+    value: 8,
+    score: 14,
+  },
+  {
+    text: "Irlande",
+    value: 9,
+    score: 3162,
+  },
+  {
+    text: "Sénégal",
+    value: 102,
+    score: 62,
+  },
+  {
+    text: "Mali",
+    value: 36,
+    score: 14,
+  },
+  {
+    text: "Russie",
+    value: 7,
+    score: 5262,
+  },
+  {
+    text: "Venezuela",
+    value: 9,
+    score: 262,
+  },
+  {
+    text: "Kenya",
+    value: 9,
+    score: 623,
+  },
+  {
+    text: "Guatemala",
+    value: 8,
+    score: 144,
+  },
+  {
+    text: "Hongrie",
+    value: 9,
+    score: 612,
+  },
+  {
+    text: "Chine",
     value: 5,
-    text: "Ireland",
+    score: 137,
   },
   {
-    color: "#FEDACC",
+    text: "Pérou",
+    value: 102,
+    score: 71,
+  },
+  {
+    text: "Ouganda",
+    value: 6,
+    score: 1,
+  },
+  {
+    text: "Bolivie",
+    value: 48,
+    score: 262,
+  },
+  {
+    text: "Chili",
     value: 1,
-    text: "Ireland",
+    score: 2222,
   },
   {
-    color: "#FEDACC",
-    value: 99,
-    text: "Ireland",
+    text: "Jordanie",
+    value: 91,
+    score: 63,
   },
   {
-    color: "#FEDACC",
-    value: 80,
-    text: "Ireland",
-    xPosition: 200,
-    yPosition: 200,
+    text: "Israel",
+    value: 87,
+    score: 14,
   },
   {
-    color: "#FEDACC",
-    value: 25,
-    text: "Ireland",
+    text: "Liban",
+    value: 9121,
+    score: 6,
   },
   {
-    color: "#FEDACC",
-    value: 89,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
-    value: 14,
-    text: "Ireland",
-  },
-  {
-    color: "#FEDACC",
-    value: 67,
-    text: "Ireland",
+    text: "Maroc",
+    value: 59,
+    score: 37,
   },
 ];
 </script>
