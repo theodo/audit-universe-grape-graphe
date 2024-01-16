@@ -51,8 +51,8 @@ export default {
         min: 5,
         max: 100,
         step: 5,
+        defaultValue: 5,
       },
-      required: false,
     },
     maxRadius: {
       label: {
@@ -63,8 +63,8 @@ export default {
         min: 50,
         max: 1000,
         step: 10,
+        defaultValue: 50,
       },
-      required: false,
     },
     data: {
       label: {
