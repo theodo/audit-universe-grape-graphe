@@ -146,15 +146,50 @@ export default {
             .on("end", dragended)
         );
 
+      const trimText = (text, threshold) => {
+        if (text.length <= threshold) return text;
+        return text.substr(0, threshold).concat("...");
+      };
+
+      const getFontSize = (dataValue) => {
+        const fontSize = size(dataValue) / 5;
+        return fontSize > 4 ? fontSize : 0;
+      };
+
       var text = node
         .append("text")
-        .text((d) => d.text)
+        .text((d) => trimText(d.text, size(d.value) / 9))
         .attr("x", width / 2)
         .attr("y", height / 2)
+        .attr("pointer-events", "none")
         .style("text-anchor", "middle")
         .style("font-weight", "bold")
-        .style("font-size", "10pt")
+        .style("font-family", "Helvetica Neue")
+        .style("font-size", (d) => `${getFontSize(d.value)}pt`)
         .style("fill", "black");
+
+      var tooltip = d3
+        .select(graphName)
+        .append("div")
+        .text("here")
+        .attr("pointer-events", "none")
+        .style("position", "absolute")
+        .style("visibility", "hidden")
+        .style("font-size", "16pt");
+
+      circle
+        .on("mouseover", function (d) {
+          return tooltip.style("visibility", "visible");
+        })
+        .on("mousemove", function (event, d) {
+          return tooltip
+            .style("top", event.pageY + 10 + "px")
+            .style("left", event.pageX + 10 + "px")
+            .text(`Nom : ${d.text}`);
+        })
+        .on("mouseout", function (d) {
+          return tooltip.style("visibility", "hidden");
+        });
 
       // Features of the forces applied to the nodes:
       var simulation = d3

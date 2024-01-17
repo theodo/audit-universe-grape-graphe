@@ -29,7 +29,7 @@ const data2 = [
   },
   {
     text: "UK",
-    value: 2,
+    value: 0,
     score: 10,
   },
   {
@@ -111,7 +111,7 @@ const data1 = [
     score: 3162,
   },
   {
-    text: "Sénégal",
+    text: "Sénégal Sénégal Sénégal Sénégal Sénégal",
     value: 102,
     score: 62,
   },
