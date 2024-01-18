@@ -180,6 +180,7 @@ export default {
         .style("background-color", "black")
         .style("color", "white")
         .style("opacity", "0.6")
+        .style("z-index", "10")
         .style("font-size", "16pt");
 
       circle
