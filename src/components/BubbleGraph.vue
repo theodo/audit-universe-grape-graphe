@@ -188,8 +188,8 @@ export default {
         })
         .on("mousemove", function (event, d) {
           return tooltip
-            .style("top", event.clientY + "px")
-            .style("left", event.clientX + "px")
+            .style("top", event.pageY + "px")
+            .style("left", event.pageX + "px")
             .text(`Nom : ${d.text}`);
         })
         .on("mouseout", function () {
