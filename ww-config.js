@@ -66,6 +66,18 @@ export default {
         defaultValue: 50,
       },
     },
+    height: {
+      label: {
+        en: "Height of the graph (in px)",
+      },
+      type: "Number",
+      options: {
+        min: 0,
+        max: 10000,
+        step: 50,
+        defaultValue: 0,
+      },
+    },
     data: {
       label: {
         en: "Data",

@@ -343,8 +343,9 @@ const props = (d) => {
     numberOfColumns: 2,
     useLogarithmicScale: true,
     LogarithmicFactor: 0.2,
-    maxRadius: 100,
-    minRadius: 5,
+    maxRadius: 0,
+    minRadius: 0,
+    height: 0,
   };
 };
 const props1 = props(data1);
