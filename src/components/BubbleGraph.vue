@@ -141,27 +141,27 @@ export default {
         bubble
           .attr("cx", (d) => {
             return (d.x = Math.max(
-              maxRadius,
-              Math.min(width - maxRadius, d.x)
+              size(d.value),
+              Math.min(width - size(d.value), d.x)
             ));
           })
           .attr("cy", (d) => {
             return (d.y = Math.max(
-              maxRadius,
-              Math.min(height - maxRadius, d.y)
+              size(d.value),
+              Math.min(height - size(d.value), d.y)
             ));
           });
         bubbleText
           .attr("x", (d) => {
             return (d.x = Math.max(
-              maxRadius,
-              Math.min(width - maxRadius, d.x)
+              size(d.value),
+              Math.min(width - size(d.value), d.x)
             ));
           })
           .attr("y", (d) => {
             return (d.y = Math.max(
-              maxRadius,
-              Math.min(height - maxRadius, d.y)
+              size(d.value),
+              Math.min(height - size(d.value), d.y)
             ));
           });
       });
