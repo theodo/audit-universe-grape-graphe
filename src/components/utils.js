@@ -23,15 +23,16 @@ export const getGraphParameters = (graphProps, containerWidth) => {
   const { width, height } = getSvgDimension(
     data,
     size,
-    maxRadius,
     graphProps.height,
     containerWidth
   );
   let acc = -1;
-  const newData = data.map((d) => {
-    acc += 1;
-    return { ...d, index: acc };
-  });
+  const newData = data
+    .sort((a, b) => a.value - b.value)
+    .map((d) => {
+      acc += 1;
+      return { ...d, index: acc };
+    });
   return {
     data: newData,
     maxRadius,
@@ -60,13 +61,7 @@ const getSizeScale = (
     : d3.scaleLinear().domain([0, maxValue]).range([minRadius, maxRadius]);
 };
 
-const getSvgDimension = (
-  data,
-  sizeScale,
-  maxRadius,
-  requiredHeight,
-  containerWidth
-) => {
+const getSvgDimension = (data, sizeScale, requiredHeight, containerWidth) => {
   const width = containerWidth;
   const circleArea = data.reduce(
     (acc, d) => acc + sizeScale(d.value) * sizeScale(d.value) * 3.14,
@@ -74,7 +69,8 @@ const getSvgDimension = (
   );
   const height =
     requiredHeight !== 0 ? requiredHeight : (circleArea * 3) / width;
-  return { width, height, maxRadius };
+  console.log(height);
+  return { width, height };
 };
 
 export const addBubbleText = (node, size, width, height) => {

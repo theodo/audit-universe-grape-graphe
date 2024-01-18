@@ -303,7 +303,7 @@ const data6 = [
   {
     label: "Bruno SA",
     value: 7,
-    score: 100,
+    score: 8,
   },
   {
     label: "Julian GMBH",
@@ -340,8 +340,8 @@ const props = (d) => {
   return {
     data: d.sort((a, b) => b.value - a.value),
     graphName: "graph",
-    numberOfColumns: 3,
-    useLogarithmicScale: true,
+    numberOfColumns: 2,
+    useLogarithmicScale: false,
     LogarithmicFactor: 0.2,
     maxRadius: 0,
     minRadius: 0,

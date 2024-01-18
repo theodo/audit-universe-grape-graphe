@@ -1,6 +1,6 @@
 {
   "name": "weweb-custom",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "scripts": {
     "build": "weweb build",
     "serve": "weweb serve"
