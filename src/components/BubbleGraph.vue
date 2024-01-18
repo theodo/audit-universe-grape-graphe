@@ -183,14 +183,18 @@ export default {
         .style("z-index", "10")
         .style("font-size", "16pt");
 
+      const globalContainer = this.$refs.container;
+
       circle
         .on("mouseover", function () {
           return tooltip.style("visibility", "visible");
         })
         .on("mousemove", function (event, d) {
+          const topDelta = globalContainer.getBoundingClientRect().top;
+          const leftDelta = globalContainer.getBoundingClientRect().top;
           return tooltip
-            .style("top", event.pageY + "px")
-            .style("left", event.pageX + "px")
+            .style("top", event.pageY - topDelta + 10 + "px")
+            .style("left", event.pageX - leftDelta + 10 + "px")
             .text(`Nom : ${d.text}`);
         })
         .on("mouseout", function () {
