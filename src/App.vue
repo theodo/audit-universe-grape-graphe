@@ -182,7 +182,7 @@ const data1 = [
   },
   {
     text: "Liban",
-    value: 91,
+    value: 9106,
     score: 6,
   },
   {
@@ -340,9 +340,9 @@ const props = (d) => {
   return {
     data: d.sort((a, b) => b.value - a.value),
     graphName: "graph",
-    numberOfColumns: 3,
+    numberOfColumns: 2,
     useLogarithmicScale: true,
-    LogarithmicFactor: 0.5,
+    LogarithmicFactor: 0.2,
     maxRadius: 100,
     minRadius: 5,
   };

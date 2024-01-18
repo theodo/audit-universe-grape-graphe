@@ -171,7 +171,6 @@ export default {
       var tooltip = d3
         .select(graphName)
         .append("div")
-        .text("here")
         .attr("pointer-events", "none")
         .style("position", "absolute")
         .style("visibility", "hidden")
@@ -182,6 +181,11 @@ export default {
         .style("opacity", "0.6")
         .style("z-index", "10")
         .style("font-size", "16pt");
+      const tooltipNameText = tooltip.append("p").style("margin-top", "0px");
+      const tooltipCoverageText = tooltip.append("p");
+      const tooltipWeightingText = tooltip
+        .append("p")
+        .style("margin-bottom", "0px");
 
       const globalContainer = this.$refs.container;
 
@@ -192,10 +196,12 @@ export default {
         .on("mousemove", function (event, d) {
           const topDelta = globalContainer.getBoundingClientRect().y;
           const leftDelta = globalContainer.getBoundingClientRect().x;
+          tooltipNameText.text(`Name : ${d.text}`);
+          tooltipCoverageText.text(`coverage: ${d.score}`);
+          tooltipWeightingText.text(`weighting: ${d.value}`);
           return tooltip
             .style("top", event.pageY - topDelta - window.scrollY + 10 + "px")
-            .style("left", event.pageX - leftDelta + 10 + "px")
-            .text(`Nom : ${d.text}`);
+            .style("left", event.pageX - leftDelta + 10 + "px");
         })
         .on("mouseout", function () {
           return tooltip.style("visibility", "hidden");
