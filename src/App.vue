@@ -293,11 +293,6 @@ const data5 = [
     value: 100,
     score: 8,
   },
-  {
-    label: "Sweden",
-    value: 100,
-    score: 8,
-  },
 ];
 const data6 = [
   {
