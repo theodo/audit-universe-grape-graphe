@@ -175,19 +175,24 @@ export default {
         .attr("pointer-events", "none")
         .style("position", "absolute")
         .style("visibility", "hidden")
+        .style("border-radius", "5px")
+        .style("padding", "4px")
+        .style("background-color", "black")
+        .style("color", "white")
+        .style("opacity", "0.6")
         .style("font-size", "16pt");
 
       circle
-        .on("mouseover", function (d) {
+        .on("mouseover", function () {
           return tooltip.style("visibility", "visible");
         })
         .on("mousemove", function (event, d) {
           return tooltip
-            .style("top", event.clientY + 10 + "px")
-            .style("left", event.clientX + 10 + "px")
+            .style("top", event.clientY + "px")
+            .style("left", event.clientX + "px")
             .text(`Nom : ${d.text}`);
         })
-        .on("mouseout", function (d) {
+        .on("mouseout", function () {
           return tooltip.style("visibility", "hidden");
         });
 
