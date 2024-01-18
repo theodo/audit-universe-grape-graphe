@@ -28,7 +28,7 @@ export const getGraphParameters = (graphProps, containerWidth) => {
   );
   let acc = -1;
   const newData = data
-    .sort((a, b) => a.value - b.value)
+    .sort((a, b) => b.value - a.value)
     .map((d) => {
       acc += 1;
       return { ...d, index: acc };
