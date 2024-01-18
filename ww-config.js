@@ -68,13 +68,13 @@ export default {
     },
     height: {
       label: {
-        en: "Height of the graph (in px)",
+        en: "Height of the graph (% of the width)",
       },
       type: "Number",
       options: {
         min: 0,
-        max: 10000,
-        step: 50,
+        max: 500,
+        step: 10,
         defaultValue: 0,
       },
     },

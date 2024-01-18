@@ -68,7 +68,9 @@ const getSvgDimension = (data, sizeScale, requiredHeight, containerWidth) => {
     0
   );
   const height =
-    requiredHeight !== 0 ? requiredHeight : (circleArea * 3) / width;
+    requiredHeight !== 0
+      ? (requiredHeight * width) / 100
+      : (circleArea * 3) / width;
   console.log(height);
   return { width, height };
 };
