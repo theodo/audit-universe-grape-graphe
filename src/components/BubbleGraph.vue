@@ -54,7 +54,6 @@ export default {
       // Initialize the circle: all located at the center of the svg area
       let node = svg.append("g").selectAll("circle").data(data).enter();
 
-      console.log(height);
       let bubble = node
         .append("circle")
         .attr("class", "node")
@@ -186,6 +185,7 @@ export default {
   justify-content: center;
   flex-grow: 1;
 }
+
 .heavy {
   font: bold 30px sans-serif;
 }
