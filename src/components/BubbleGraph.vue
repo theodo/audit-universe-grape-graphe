@@ -10,7 +10,7 @@ export default {
         Array,
         {
           value: Number,
-          text: String,
+          label: String,
         },
       ],
       graphName: String,
@@ -35,7 +35,6 @@ export default {
 
   methods: {
     renderGraph() {
-      console.log(this.bubbleGraphProps);
       const { data, maxRadius, width, height, size, numberOfColumns } =
         utils.getGraphParameters(
           this.bubbleGraphProps,
@@ -52,18 +51,25 @@ export default {
         .attr("width", width)
         .attr("height", height);
 
+      console.log(data);
+
       // Initialize the circle: all located at the center of the svg area
       let node = svg.append("g").selectAll("circle").data(data).enter();
 
-      console.log(height);
       let bubble = node
         .append("circle")
         .attr("class", "node")
-        .attr("r", (d) => {
-          return size(d.value);
-        })
-        .attr("cx", width / 2)
-        .attr("cy", height / 2)
+        .attr("r", (d) => size(d.value))
+        .attr(
+          "cx",
+          (d) => (width * (d.index % numberOfColumns)) / numberOfColumns
+        )
+        .attr(
+          "cy",
+          (d) =>
+            (height * Math.round(d.index / numberOfColumns)) /
+            (data.length / numberOfColumns)
+        )
         .style("fill", "#D1D1D1")
         .style("fill-opacity", 1)
         .call(
@@ -81,13 +87,13 @@ export default {
       utils.addTooltip(globalContainer, graphName, bubble);
 
       // Features of the forces applied to the nodes:
-      const repart = d3
-        .scalePow()
-        .exponent(1)
-        .domain([0, data.length])
-        .range([0, height]);
+      // const repart = d3
+      //   .scalePow()
+      //   .exponent(1)
+      //   .domain([0, data.length])
+      //   .range([0, height]);
 
-      let acc = 0;
+      // let acc = 0;
 
       var simulation = d3
         .forceSimulation()
@@ -96,21 +102,28 @@ export default {
           d3
             .forceX()
             .strength(0.1)
-            .x(() => {
-              return ((acc % numberOfColumns) * width) / numberOfColumns;
-            })
+            .x(width / 2)
         )
+        // .force(
+        //   "y",
+        //   d3
+        //     .forceY()
+        //     .strength((d) => size(d.value) / maxRadius)
+        //     .y(0)
+        // )
         .force(
           "y",
           d3
             .forceY()
             .strength(0.1)
-            .y(() => {
-              acc = acc + 1;
-              return (repart(acc) * height) / repart(data.length);
-            })
+            .y(
+              (d) =>
+                (height * d.index) /
+                numberOfColumns /
+                (data.length / numberOfColumns)
+            )
         )
-        .force("charge", d3.forceManyBody().strength(10)) // Nodes are attracted one each other of scale * 1000000 is > 0
+        // .force("charge", d3.forceManyBody().strength(10)) // Nodes are attracted one each other of scale * 1000000 is > 0
         .force(
           "collide",
           d3

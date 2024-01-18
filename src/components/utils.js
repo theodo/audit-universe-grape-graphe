@@ -24,12 +24,16 @@ export const getGraphParameters = (graphProps, containerWidth) => {
     data,
     size,
     maxRadius,
-    numberOfColumns,
     graphProps.height,
     containerWidth
   );
+  let acc = -1;
+  const newData = data.map((d) => {
+    acc += 1;
+    return { ...d, index: acc };
+  });
   return {
-    data,
+    data: newData,
     maxRadius,
     minRadius,
     width,
@@ -60,43 +64,23 @@ const getSvgDimension = (
   data,
   sizeScale,
   maxRadius,
-  numberOfColumns,
   requiredHeight,
   containerWidth
 ) => {
-  const averageOfValues =
-    data.reduce((a, b) => {
-      return a + b.value;
-    }, 0) / data.length;
-
-  const sumOfQuartileValue =
-    data.length > 1
-      ? data[Math.round(data.length / 4)].value +
-        data[Math.round(data.length / 2)].value +
-        data[Math.round((3 * data.length) / 4)].value +
-        data[0].value +
-        data[data.length - 1].value
-      : data[0].value;
-
-  const averageOfQuartileValue = sumOfQuartileValue / 5 || 0;
-
-  const averageToUse = Math.max(averageOfQuartileValue, averageOfValues);
-
   const width = containerWidth;
+  const circleArea = data.reduce(
+    (acc, d) => acc + sizeScale(d.value) * sizeScale(d.value) * 3.14,
+    0
+  );
   const height =
-    requiredHeight !== 0
-      ? requiredHeight
-      : Math.max(
-          maxRadius * 2.5,
-          (2 * (data.length * sizeScale(averageToUse))) / numberOfColumns
-        );
+    requiredHeight !== 0 ? requiredHeight : (circleArea * 3) / width;
   return { width, height, maxRadius };
 };
 
 export const addBubbleText = (node, size, width, height) => {
   return node
     .append("text")
-    .text((d) => trimText(d.text, size(d.value) / 9))
+    .text((d) => trimText(d.label, size(d.value) / 9))
     .attr("x", width / 2)
     .attr("y", height / 2)
     .attr("pointer-events", "none")
@@ -145,7 +129,7 @@ export const addTooltip = (globalContainer, graphName, bubble) => {
     .on("mousemove", (event, d) => {
       const yDelta = globalContainer.getBoundingClientRect().y;
       const xDelta = globalContainer.getBoundingClientRect().x;
-      tooltipNameText.text(`Name : ${d.text}`);
+      tooltipNameText.text(`Name : ${d.label}`);
       tooltipCoverageText.text(`coverage: ${d.score}`);
       tooltipWeightingText.text(`weighting: ${d.value}`);
       return tooltip

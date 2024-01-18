@@ -23,47 +23,47 @@ export default {
 <script setup>
 const data2 = [
   {
-    text: "Iran",
+    label: "Iran",
     value: 100,
     score: 4,
   },
   {
-    text: "UK",
+    label: "UK",
     value: 0,
     score: 10,
   },
   {
-    text: "USA",
+    label: "USA",
     value: 2,
     score: 10,
   },
   {
-    text: "France",
+    label: "France",
     value: 2,
     score: 10,
   },
   {
-    text: "Ireland",
+    label: "Ireland",
     value: 2,
     score: 10,
   },
   {
-    text: "Germany",
+    label: "Germany",
     value: 2,
     score: 1,
   },
   {
-    text: "Enies lobby",
+    label: "Enies lobby",
     value: 2,
     score: 1,
   },
   {
-    text: "Switzerland",
+    label: "Switzerland",
     value: 2,
     score: 1,
   },
   {
-    text: "Sweden",
+    label: "Sweden",
     value: 2,
     score: 1,
   },
@@ -71,122 +71,122 @@ const data2 = [
 
 const data1 = [
   {
-    text: "Italie",
+    label: "Italie",
     value: 10,
     score: 4,
   },
   {
-    text: "France",
+    label: "France",
     value: 7,
     score: 100,
   },
   {
-    text: "Espagne",
+    label: "Espagne",
     value: 9,
     score: 55,
   },
   {
-    text: "Roumanie",
+    label: "Roumanie",
     value: 8,
     score: 32,
   },
   {
-    text: "Danemark",
+    label: "Danemark",
     value: 10,
     score: 90,
   },
   {
-    text: "Hollande",
+    label: "Hollande",
     value: 7,
     score: 78,
   },
   {
-    text: "UK",
+    label: "UK",
     value: 8,
     score: 14,
   },
   {
-    text: "Irlande",
+    label: "Irlande",
     value: 9,
     score: 3162,
   },
   {
-    text: "Sénégal Sénégal Sénégal Sénégal Sénégal",
+    label: "Sénégal Sénégal Sénégal Sénégal Sénégal",
     value: 102,
     score: 62,
   },
   {
-    text: "Mali",
+    label: "Mali",
     value: 36,
     score: 14,
   },
   {
-    text: "Russie",
+    label: "Russie",
     value: 7,
     score: 5262,
   },
   {
-    text: "Venezuela",
+    label: "Venezuela",
     value: 9,
     score: 262,
   },
   {
-    text: "Kenya",
+    label: "Kenya",
     value: 9,
     score: 623,
   },
   {
-    text: "Guatemala",
+    label: "Guatemala",
     value: 8,
     score: 144,
   },
   {
-    text: "Hongrie",
+    label: "Hongrie",
     value: 9,
     score: 612,
   },
   {
-    text: "Chine",
+    label: "Chine",
     value: 5,
     score: 137,
   },
   {
-    text: "Pérou",
+    label: "Pérou",
     value: 102,
     score: 71,
   },
   {
-    text: "Ouganda",
+    label: "Ouganda",
     value: 6,
     score: 1,
   },
   {
-    text: "Bolivie",
+    label: "Bolivie",
     value: 48,
     score: 262,
   },
   {
-    text: "Chili",
+    label: "Chili",
     value: 1,
     score: 2222,
   },
   {
-    text: "Jordanie",
+    label: "Jordanie",
     value: 91,
     score: 63,
   },
   {
-    text: "Israel",
+    label: "Israel",
     value: 87,
     score: 14,
   },
   {
-    text: "Liban",
+    label: "Liban",
     value: 9106,
     score: 6,
   },
   {
-    text: "Maroc",
+    label: "Maroc",
     value: 59,
     score: 37,
   },
@@ -194,47 +194,47 @@ const data1 = [
 
 const data3 = [
   {
-    text: "Iran",
+    label: "Iran",
     value: 2,
     score: 10,
   },
   {
-    text: "UK",
+    label: "UK",
     value: 10000,
     score: 1,
   },
   {
-    text: "USA",
+    label: "USA",
     value: 100,
     score: 2,
   },
   {
-    text: "France",
+    label: "France",
     value: 100,
     score: 3,
   },
   {
-    text: "Ireland",
+    label: "Ireland",
     value: 100,
     score: 4,
   },
   {
-    text: "Germany",
+    label: "Germany",
     value: 100,
     score: null,
   },
   {
-    text: "Enies lobby",
+    label: "Enies lobby",
     value: 100,
     score: 7,
   },
   {
-    text: "Switzerland",
+    label: "Switzerland",
     value: 100,
     score: null,
   },
   {
-    text: "Sweden",
+    label: "Sweden",
     value: 100,
     score: null,
   },
@@ -242,96 +242,101 @@ const data3 = [
 
 const data4 = [
   {
-    text: "Iran",
+    label: "Iran",
     value: 2,
     score: 10,
   },
   {
-    text: "UK",
+    label: "UK",
     value: 100,
     score: 3,
   },
   {
-    text: "USA",
+    label: "USA",
     value: 100,
     score: 1,
   },
   {
-    text: "France",
+    label: "France",
     value: 100,
     score: 7,
   },
   {
-    text: "Ireland",
+    label: "Ireland",
     value: 100,
     score: 8,
   },
   {
-    text: "Germany",
+    label: "Germany",
     value: 100,
     score: 4,
   },
   {
-    text: "Enies lobby",
+    label: "Enies lobby",
     value: 100,
     score: 2,
   },
   {
-    text: "Switzerland",
+    label: "Switzerland",
     value: 100,
     score: 9,
   },
   {
-    text: "Sweden",
+    label: "Sweden",
     value: 100,
     score: 8,
   },
 ];
 const data5 = [
   {
-    text: "Sweden",
+    label: "Sweden",
+    value: 100,
+    score: 8,
+  },
+  {
+    label: "Sweden",
     value: 100,
     score: 8,
   },
 ];
 const data6 = [
   {
-    text: "SARL John Doe",
+    label: "SARL John Doe",
     value: 10,
     score: 4,
   },
   {
-    text: "Bruno SA",
+    label: "Bruno SA",
     value: 7,
     score: 100,
   },
   {
-    text: "Julian GMBH",
+    label: "Julian GMBH",
     value: 4,
     score: 55,
   },
   {
-    text: "Paul LTD",
+    label: "Paul LTD",
     value: 8,
     score: 32,
   },
   {
-    text: "BV",
+    label: "BV",
     value: 10,
     score: 90,
   },
   {
-    text: "Marco BV",
+    label: "Marco BV",
     value: 7,
     score: 78,
   },
   {
-    text: "Le 1",
+    label: "Le 1",
     value: 3,
     score: 14,
   },
   {
-    text: "Le 2",
+    label: "Le 2",
     value: 1,
     score: 62,
   },
@@ -340,7 +345,7 @@ const props = (d) => {
   return {
     data: d.sort((a, b) => b.value - a.value),
     graphName: "graph",
-    numberOfColumns: 2,
+    numberOfColumns: 3,
     useLogarithmicScale: true,
     LogarithmicFactor: 0.2,
     maxRadius: 0,
