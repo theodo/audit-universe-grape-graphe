@@ -35,6 +35,7 @@ export default {
 
   methods: {
     renderGraph() {
+      console.log(this.bubbleGraphProps);
       const { data, maxRadius, width, height, size, numberOfColumns } =
         utils.getGraphParameters(
           this.bubbleGraphProps,
