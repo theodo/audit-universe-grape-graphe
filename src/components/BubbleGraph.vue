@@ -190,8 +190,8 @@ export default {
           return tooltip.style("visibility", "visible");
         })
         .on("mousemove", function (event, d) {
-          const topDelta = globalContainer.getBoundingClientRect().top;
-          const leftDelta = globalContainer.getBoundingClientRect().top;
+          const topDelta = globalContainer.getBoundingClientRect().y;
+          const leftDelta = globalContainer.getBoundingClientRect().x;
           return tooltip
             .style("top", event.pageY - topDelta + 10 + "px")
             .style("left", event.pageX - leftDelta + 10 + "px")
